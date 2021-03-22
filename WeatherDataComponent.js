@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
+import { API_KEY } from '@env';
 
 const WeatherDataComponent = ({ latitude, longitude }) => {
 		const [weatherData, setWeatherData] = useState(null);
+		console.log(API_KEY)
 
 		useEffect(() => {
-				fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.API_KEY}`)
+				fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
 						.then(res => res.json())
 						.then(data => setWeatherData(data));
 		}, []);
 
-		console.log(weatherData)
+		console.log('weather data',weatherData);
 
 		return (
 				<View style={styles.container}>
