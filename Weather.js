@@ -141,3 +141,5 @@ const styles = StyleSheet.create({
 });
 
 export default Weather;
+
+// expo-linear-gradient - expected version range: ~8.4.0

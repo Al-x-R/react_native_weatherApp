@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { Alert } from 'react-native-web';
-import { StyleSheet } from 'react-native';
 import * as Location from 'expo-location';
 
 import { BASE_URL, API_KEY } from '@env';
@@ -32,7 +31,6 @@ export default class extends React.Component {
 						sunrise: data.sys.sunrise,
 						sunset: data.sys.sunset,
 						wind: data.wind.speed,
-
 				});
 		};
 
@@ -78,11 +76,3 @@ export default class extends React.Component {
 
 }
 
-const styles = StyleSheet.create({
-		container: {
-				flex: 1,
-				backgroundColor: '#fff',
-				alignItems: 'center',
-				justifyContent: 'center',
-		},
-});
