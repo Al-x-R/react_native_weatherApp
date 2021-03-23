@@ -1,15 +1,21 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import format from 'date-fns/format';
 import fromUnixTime from 'date-fns/fromUnixTime';
+import { LinearGradient } from 'expo-linear-gradient';
+import { StyleSheet, View, Text, StatusBar } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+import { weatherOptions } from './weatherOptions';
 
 const Weather = ({ temp, city, feels_like, pressure, weather, temp_max, temp_min, sunrise, sunset, wind, humidity }) => {
 		const sunsetTime = format(new Date(fromUnixTime(sunset)), ['HH:mm']);
 		const sunriseTime = format(new Date(fromUnixTime(sunrise)), ['HH:mm']);
 
 		return (
-				<View style={styles.container}>
+				<LinearGradient
+						colors={weatherOptions[weather].gradient}
+						style={styles.container}>
+						<StatusBar barStyle="light-content" />
 						<View style={styles.headerContainer}>
 								<Text style={styles.city}>{city}</Text>
 								<Text style={styles.other}>{weather}</Text>
@@ -68,8 +74,7 @@ const Weather = ({ temp, city, feels_like, pressure, weather, temp_max, temp_min
 								</View>
 
 						</View>
-
-				</View>
+				</LinearGradient>
 		);
 };
 
@@ -79,15 +84,13 @@ const styles = StyleSheet.create({
 		},
 		headerContainer: {
 				flex: 2,
-				backgroundColor: '#fff',
 				alignItems: 'center',
 				justifyContent: 'center',
-				// borderWidth: 1,
 		},
 		bottomContainer: {
 				flex: 1,
-				backgroundColor: '#fff',
 				borderTopWidth: 1,
+				borderTopColor: 'silver'
 		},
 		rowHeaderContainer: {
 				flexDirection: 'row',
@@ -104,6 +107,7 @@ const styles = StyleSheet.create({
 				flex: 1,
 				flexDirection: 'row',
 				borderBottomWidth: 1,
+				borderBottomColor: 'silver'
 		},
 		columnContainer: {
 				flex: 1,
@@ -113,21 +117,26 @@ const styles = StyleSheet.create({
 		city: {
 				fontSize: 45,
 				fontWeight: 'bold',
+				color: 'white'
 		},
 		temp: {
 				fontSize: 55,
 				fontWeight: 'bold',
+				color: 'white'
 		},
 		other: {
 				fontSize: 35,
 				fontWeight: 'bold',
+				color: 'white'
 		},
 		infoTitle: {
 				fontSize: 15,
+				color: 'silver'
 		},
 		infoText: {
 				fontSize: 20,
 				fontWeight: 'bold',
+				color: 'white'
 		},
 });
 
